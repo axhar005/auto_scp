@@ -18,7 +18,7 @@ CNAME = $(YELLOW)~ SCP ${GREEN}
 #--- COMMAND VARIABLES ---#
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+#CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 RM = rm -f
 
@@ -80,12 +80,12 @@ OBJS = $(addprefix ${OBJDIR}/, ${SRCS:.c=.o})
 
 #--- RULES ---#
 ${OBJDIR}/%.o : %.c
-	@${CC} ${CFLAGS} -I${INCDIR} -I. -c $< -o $@
+	@${CC} -I${INCDIR} -I. -c $< -o $@
 	
 all				: 	 	pokeball libft $(NAME)
 	
 $(NAME)			: 		$(OBJDIR) $(OBJS)
-	@${CC} ${CFLAGS} -I${INCDIR} -o ${NAME} ${OBJS} ${LDIR}${LIBFT}
+	@${CC} -I${INCDIR} -o ${NAME} ${OBJS} ${LDIR}${LIBFT}
 	@echo "$(CNAME)       sucessefully compiled 📁.${RESET}"
 
 $(OBJDIR)		:
