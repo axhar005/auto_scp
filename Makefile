@@ -6,7 +6,7 @@
 #    By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 12:34:33 by oboucher          #+#    #+#              #
-#    Updated: 2023/03/08 20:13:22 by oboucher         ###   ########.fr        #
+#    Updated: 2023/03/14 20:06:51 by oboucher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CNAME = $(YELLOW)~ SCP ${GREEN}
 #--- COMMAND VARIABLES ---#
 CC = gcc
 
-#CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 RM = rm -f
 
@@ -80,12 +80,12 @@ OBJS = $(addprefix ${OBJDIR}/, ${SRCS:.c=.o})
 
 #--- RULES ---#
 ${OBJDIR}/%.o : %.c
-	@${CC} -I${INCDIR} -I. -c $< -o $@
+	@${CC} ${CFLAGS} -I${INCDIR} -I. -c $< -o $@
 	
 all				: 	 	pokeball libft $(NAME)
 	
 $(NAME)			: 		$(OBJDIR) $(OBJS)
-	@${CC} -I${INCDIR} -o ${NAME} ${OBJS} ${LDIR}${LIBFT}
+	@${CC} ${CFLAGS} -I${INCDIR} -o ${NAME} ${OBJS} ${LDIR}${LIBFT}
 	@echo "$(CNAME)       sucessefully compiled 📁.${RESET}"
 
 $(OBJDIR)		:
