@@ -16,8 +16,8 @@ typedef struct s_arr
 {
 	char	*flag0[10000];
 	char	*flag1[10000];
-	char	*env0[10];
-	char	*env1[10];
+	char	*env0[100];
+	char	*env1[100];
 	char	*cmd[5];
 	char	**temp;
 	char	*src;
@@ -30,10 +30,13 @@ typedef struct s_arr
 // prototype
 char		*ft_strschr(char *str, char c);
 size_t		ft_strcnum(char *str, char c);
+size_t		isfolder(char *arr);
 void		read_input(t_arr *arr);
 void		read_flag(t_arr *arr, char **str);
 void		handling_flag(t_arr *arr, char **str, char *flag);
 void		draw_help(t_arr *arr);
 void		set_env(t_arr *arr);
+char		**ft_dfree(char **tab);
+char		*ft_null_strjoin(char *s1, char *s2);
 
 #endif
